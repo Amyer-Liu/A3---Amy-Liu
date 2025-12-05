@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8">
+    <title>Assignment 3</title>
+    <!-- Created by Amy Liu on 2025 Dec 3 -->
+
+    <!-- Google Font 1 - Indie Flower-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Indie+Flower&family=Roboto:ital,wght@0,100..900;1,100..900&family=Stack+Sans+Notch:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+    <!-- Google Font 1 - Inconsolata-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Indie+Flower&family=Roboto:ital,wght@0,100..900;1,100..900&family=Stack+Sans+Notch:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inconsolata", monospace;
+        background-color: #ffffff;
+        justify-content: center;
+        display: flex;
+      }
+
+      .frame {
+        width: 1440px;
+        background-color: #d3d3d3;
+        padding: 120px 0;
+      }
+
+      .content-wrapper {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        padding-top: 50px;
+      }
+
+      .header-banner {
+        text-align: center;
+        padding: 0 0 2.5em 0;
+      }
+
+      .header-banner img {
+        width: 90%;
+        height: auto;
+      }
+
+      /* ─────────────── NAVIGATION ─────────────── */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e7d8c6;
+        padding: 20px 30px;
+        gap: 40px;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 40px;
+        color: #D7A4C5;
+        margin: 8px 20px;
+      }
+
+      nav a:visited {
+        color: #C39CB9;
+      }
+
+      nav a:hover {
+        color: #DE3783;
+      }
+
+      nav a:active,
+      nav a:focus {
+        color: #DE3783;
+        font-weight: 800;
+        text-decoration: underline;
+        text-decoration-thickness: 8px;
+        text-underline-offset: 10px;
+        outline: none;
+      }
+
+      .logo {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+      }
+
+      .logo img {
+        height: 120px;
+        width: auto;
+        display: block;
+      }
+
+      /* ─────────────── ID Links ─────────────── */
+      #home,
+      #education,
+      #skills,
+      #projects {
+        min-height: 700px;
+        padding: 60px 80px;
+        box-sizing: border-box;
+      }
+
+      #home {
+        background-color: #244196;
+        color: white;
+        padding: 0;
+      }
+
+      #education,
+      #skills,
+      #projects {
+        background-color: #EDE8E2;
+        color: #244196;
+      }
+
+      /* ─────────────── HOME:ABOUT ME SECTION ─────────────── */
+      .about-container {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        gap: 5%;
+        background-color: #244196;
+        color: white;
+        padding: 4em 80px;
+        align-items: flex-start;
+      }
+
+      .left-column img {
+        width: 100%;
+        height: auto;
+        border: 3px solid #D7A4C5;
+        margin-top: 8em;
+        margin-bottom: 35px;
+        display: block;
+      }
+
+      .contact-box {
+        background-color: #E6D9C7;
+        color: #244196;
+        padding: 0.4em 1em;
+        border-radius: 40px;
+        display: inline-block;
+        margin-top: 0.6em;
+        font-size: 20px;
+        line-height: 1.1;
+      }
+
+      .right-column h1 {
+        font-family: "Indie Flower", cursive;
+        font-size: 60px;
+        color: #D7A4C5;
+        margin-left: 2.5em;
+        margin-bottom: 1.4em;
+        margin-top: 0.3em;
+        text-transform: uppercase;
+      }
+
+      .right-column p {
+        font-family: "Inconsolata", monospace;
+        font-size: 25.5px;
+        line-height: 1.6;
+        margin: 0 0 4em 0;
+        margin-top: -2.9em;
+        margin-right: 1.5em;
+      }
+
+      /* ─────────────── HOME:PROJECTS SECTION─────────────── */
+      .projects {
+        background-color: #EDE8E2;
+        padding: 4em 90px;
+      }
+
+      .projects h2 {
+        font-family: "Indie Flower", cursive;
+        color: #244196;
+        font-size: 60px;
+        text-transform: uppercase;
+        margin: -0.4em 0 0.4em -0.3em;
+      }
+
+      .project-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 4.5em;
+        padding: 0;
+      }
+
+      .project-card {
+        width: 30%;
+        text-align: center;
+      }
+
+      .project-frame {
+        background-color: #E6D9C7;
+        padding: 1.1em;
+        border-radius: 22px;
+      }
+
+      .project-frame img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 18px;
+        display: block;
+      }
+
+      .project-name {
+        display: inline-block;
+        margin-top: 1em;
+        padding: 0.6em 1.4em;
+        border-radius: 60px;
+        background-color: #244196;
+        color: white;
+        font-weight: 200px;
+        font-size: 25px;
+      }
+
+      /* ─────────────── EDUCATION─────────────── */
+      #education {
+        padding: 0;
+        height: auto;
+        background: none;
+      }
+
+      #education .edu-top {
+        background-color: #244196;
+        color: white;
+        padding: 7em 7em 2em;
+      }
+
+      #education .edu-top-grid {
+        display: grid;
+        grid-template-columns: 55% 45%;
+        gap: 64px;
+        align-items: start;
+      }
+
+      #education .edu-heading {
+        font-family: "Indie Flower", cursive;
+        font-size: 50px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin: 0 0 40px 0;
+        color: white;
+      }
+
+      #education .timeline-item {
+        margin-bottom: 60px;
+      }
+
+      #education .meta-row {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 20px;
+      }
+
+      #education .meta-star {
+        color: #DE3783;
+        font-size: 60px;
+        line-height: 1;
+        margin-top: -0.1em;
+      }
+
+      #education .meta-pill {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: #5580B5;
+        font-size: 35px;
+        margin-top: 0.1em;
+      }
+
+      #education .timeline-title {
+        margin: 0 0 8px 0;
+        font-size: 35px;
+        font-weight: 200px;
+        margin-left: 2em;
+      }
+
+      #education .timeline-sub {
+        margin: 0;
+        font-size: 27px;
+        line-height: 1.5;
+        max-width: 400px;
+        margin-left: 2.6em;
+        padding-top: 0.3em;
+      }
+
+      #education .software-item {
+        display: grid;
+        grid-template-columns: 60px 40px;
+        gap: 22px;
+        align-items: center;
+        margin: 26px 0;
+      }
+
+      #education .software-badge {
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+        background: #5580B5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.3em;
+      }
+
+      #education .software-badge img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        display: block;
+      }
+
+      #education .stars {
+        justify-self: start;
+        font-size: 60px;
+        letter-spacing: 25px;
+        line-height: 1;
+        margin-left: 0.1em;
+        color: #DE3783;
+      }
+
+      #education .star-off {
+        color: #5580B5;
+      }
+
+      #education .edu-exp {
+        margin-top: 44px;
+      }
+
+      #education .exp-grid {
+        display: grid;
+        grid-template-columns: 47% 53%;
+        gap: 80px;
+        align-items: start;
+      }
+
+      #education .edu-extras {
+        background-color: #E6D9C7;
+        color: #244196;
+        padding: 48px 90px 54px;
+        text-align: center;
+      }
+
+      #education .extras-title {
+        font-family: "Indie Flower", cursive;
+        font-size: 60px;
+        margin: 0 0 34px 0;
+        color: #244196;
+      }
+
+      #education .extras-row {
+        display: grid;
+        grid-template-columns: 150px 150px 150px 150px 150px 150px;
+        gap: 45px;
+        margin-left: -3.5em;
+        margin-top: -2em;
+        justify-items: center;
+        align-items: start;
+      }
+
+      #education .extra-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #education .extra-icon {
+        margin-bottom: 15px;
+      }
+
+      #education .extra-icon img {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        display: block;
+      }
+
+      #education .extra-label {
+        margin: 0;
+        color: #DE3783;
+        font-weight: 700px;
+        font-size: 30px;
+        line-height: 1.15;
+      }
+
+      #education .edu-bottom {
+        background-color: #244196;
+        color: white;
+        padding: 76px 90px;
+      }
+
+      #education .bottom-grid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 60px;
+        align-items: start;
+      }
+
+      #education .lang-item {
+        display: grid;
+        grid-template-columns: 55% 45%;
+        margin: 28px 0;
+      }
+
+      #education .lang-name {
+        font-size: 60px;
+        font-weight: 900;
+        line-height: 1;
+        margin-top: 0.2em;
+      }
+
+      #education .lang-level {
+        font-size: 40px;
+        font-weight: 400;
+        align-self: end;
+        color: #D7A4C5;
+        padding-bottom: 0.1em;
+      }
+
+      #education .involve-card {
+        background-color: #9DC1D9;
+        padding: 30px 40px;
+        margin-top: 40px;
+        border-radius: 15px;
+      }
+
+      #education .involve-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #education .involve-list li {
+        color: #DE3783;
+        font-size: 33px;
+        line-height: 1.6;
+        padding: 12px 0;
+      }
+
+      #education .involve-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* ─────────────── SKILLS SECTION─────────────── */
+      #skills {
+        padding: 0;
+        height: auto;
+        background: none;
+      }
+
+      #skills .skills-top {
+        background-color: #9dc1d9;
+        color: #ffffff;
+        padding: 60px 90px;
+        position: relative;
+        /* FIXED for absolute children */
+      }
+
+      #skills .skills-inner {
+        margin: 0 auto;
+      }
+
+      /* FIXED: Merged two duplicate selectors into this single block */
+      #skills .skills-title-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: #6F8FB9;
+        border-radius: 999px;
+        padding: 14px 28px;
+      }
+
+      #skills .skills-title-pill h2 {
+        margin: 0;
+        font-family: "Indie Flower", cursive;
+        font-size: 42px;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      /* End of merged block */
+
+      #skills .skills-bubbles {
+        margin-top: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #skills .skills-bubbles img {
+        width: 78%;
+        height: auto;
+        display: block;
+      }
+
+      #skills .skills-decor {
+        position: absolute;
+        right: 70px;
+        /* Adjusted slightly */
+        top: 70px;
+        /* Adjusted slightly */
+      }
+
+      #skills .skills-decor img {
+        width: 140px;
+        height: auto;
+        display: block;
+      }
+
+      /* Bottom (beige) area */
+      #skills .skills-bottom {
+        background-color: #EDE8E2;
+        /* Beige */
+        color: #244196;
+        position: relative;
+        padding: 60px 90px;
+      }
+
+      /* character image centered */
+      #skills .skills-character {
+        display: flex;
+        justify-content: center;
+        margin-top: -25px;
+        /* pulls character up slightly */
+      }
+
+      #skills .skills-character img {
+        width: 360px;
+        height: auto;
+        display: block;
+      }
+
+      /* Why Me row: line + pill */
+      #skills .whyme-row {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      #skills .whyme-divider {
+        height: 4px;
+        width: 260px;
+        background: #244196;
+        border-radius: 999px;
+      }
+
+      #skills .whyme-pill {
+        background: #6F8FB9;
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 10px 26px;
+        font-family: "Indie Flower", cursive;
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      /* text paragraph block */
+      #skills .whyme-text {
+        max-width: 820px;
+        margin: 30px auto 0 auto;
+      }
+
+      #skills .whyme-text p {
+        margin: 0;
+        font-family: "Inconsolata", monospace;
+        font-size: 22px;
+        line-height: 1.8;
+        color: #244196;
+      }
+
+      /* optional doodle bottom right */
+      #skills .whyme-doodle {
+        position: absolute;
+        right: 70px;
+        bottom: 35px;
+      }
+
+      #skills .whyme-doodle img {
+        width: 120px;
+        height: auto;
+        display: block;
+      }
+
+      /* ─────────────── FOOTER ─────────────── */
+      footer {
+        text-align: center;
+        padding: 1.2em 0 1em 0;
+        background-color: #E6D9C7;
+      }
+
+      .footer-name {
+        font-family: "Inconsolata", monospace;
+        color: #244196;
+        font-size: 55px;
+        margin: 0;
+        line-height: 1;
+        margin-top: -0.1em;
+      }
+
+      .footer-copyright {
+        margin: 1em 0 0 0;
+        font-size: 18px;
+        color: #244196;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="frame">
+      <div class="content-wrapper">
+
+        <!-- HEADER -->
+        <div class="header-banner">
+          <img src="Banner.jpg" width="1080" height="360" alt="Portfolio banner designed in Procreate">
+        </div>
+
+        <!-- NAV -->
+        <nav>
+          <div class="logo">
+            <img src="Logo.PNG" width="120" height="120" alt="Amy Liu logo">
+          </div>
+          <a href="#home">Home</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+        </nav>
+
+        <!-- HOME:ABOUT ME -->
+        <div id="home">
+          <div class="about-container">
+            <div class="left-column">
+              <img src="Profile.jpg" width="480" height="640" alt="Profile photo of myself">
+              <div class="contact-box">
+                <p><strong>Email:</strong> <a href="mailto:a383liu@uwaterloo.ca">a383liu@uwaterloo.ca</a></p>
+                <p><strong>Phone:</strong> 6477690826</p>
+              </div>
+            </div>
+            <div class="right-column">
+              <h1>About Me</h1>
+              <p> As a junior designer, I believe meaningful digital experiences begin with
+                understanding people. I’m passionate about creating intuitive, human-centered
+                interfaces that make users feel supported and empowered.</p>
+              <p>Having lived in three different countries, I’ve been shaped by diverse cultures
+                and ways of communicating. This global perspective fuels my curiosity and empathy
+                as a designer. I love exploring cultural behaviors and design traditions around
+                the world, then weaving those insights into inclusive, thoughtful digital experiences.</p>
+            </div>
+          </div>
+          <!-- HOME:PROJECT SECTION -->
+          <div class="projects">
+            <h2>Project Overview</h2>
+            <div class="project-row">
+              <div class="project-card">
+                <div class="project-frame">
+                  <img src="design1.PNG" width="600" height="600" alt="Burger Ops card game design">
+                </div>
+                <p class="project-name">Card Game Design</p>
+              </div>
+              <div class="project-card">
+                <div class="project-frame">
+                  <img src="design2.PNG" width="800" height="450" alt="Purple Bubble Tea website redesign">
+                </div>
+                <p class="project-name">Website Redesign</p>
+              </div>
+              <div class="project-card">
+                <div class="project-frame">
+                  <img src="design3.PNG" width="600" height="900" alt="GBDA 101 poster design">
+                </div>
+                <p class="project-name">Poster Design</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div id="education">
+          <div class="edu-top">
+            <div class="edu-top-grid">
+              <div>
+                <h2 class="edu-heading">Education</h2>
+                <div class="timeline-item">
+                  <div class="meta-row">
+                    <span class="meta-star">★</span>
+                    <span class="meta-pill">2020 - 2024</span>
+                  </div>
+                  <h3 class="timeline-title">Unionville High School</h3>
+                  <p class="timeline-sub">High School Diploma</p>
+                </div>
+                <div class="timeline-item">
+                  <div class="meta-row">
+                    <span class="meta-star">★</span>
+                    <span class="meta-pill">2024 - 2029</span>
+                  </div>
+                  <h3 class="timeline-title">University of Waterloo</h3>
+                  <p class="timeline-sub">
+                    Bachelor's in Global Business and Digital Arts, with a minor in International Trade
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h2 class="edu-heading">Software</h2>
+                <div class="software-list">
+                  <div class="software-item">
+                    <div class="software-badge">
+                      <img src="ai.png" alt="Adobe Illustrator">
+                    </div>
+                    <div class="stars">
+                      <span class="star-on">★</span><span class="star-on">★</span><span class="star-on">★</span><span class="star-off">★</span><span class="star-off">★</span>
+                    </div>
+                  </div>
+                  <div class="software-item">
+                    <div class="software-badge">
+                      <img src="ps.png" alt="Adobe Photoshop">
+                    </div>
+                    <div class="stars">
+                      <span class="star-on">★</span><span class="star-on">★</span><span class="star-on">★</span><span class="star-on">★</span><span class="star-off">★</span>
+                    </div>
+                  </div>
+                  <div class="software-item">
+                    <div class="software-badge">
+                      <img src="id.png" alt="Adobe InDesign">
+                    </div>
+                    <div class="stars">
+                      <span class="star-on">★</span><span class="star-on">★</span><span class="star-off">★</span><span class="star-off">★</span><span class="star-off">★</span>
+                    </div>
+                  </div>
+                  <div class="software-item">
+                    <div class="software-badge">
+                      <img src="figma.png" alt="Figma">
+                    </div>
+                    <div class="stars">
+                      <span class="star-on">★</span><span class="star-on">★</span><span class="star-on">★</span><span class="star-off">★</span><span class="star-off">★</span>
+                    </div>
+                  </div>
+                  <div class="software-item">
+                    <div class="software-badge">
+                      <img src="pr.png" alt="Adobe Premiere Pro">
+                    </div>
+                    <div class="stars">
+                      <span class="star-on">★</span><span class="star-on">★</span><span class="star-off">★</span><span class="star-off">★</span><span class="star-off">★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="edu-exp">
+              <h2 class="edu-heading">Experience</h2>
+              <div class="exp-grid">
+                <div class="exp-col">
+                  <div class="timeline-item">
+                    <div class="meta-row">
+                      <div class="meta-star">★</div>
+                      <div class="meta-pill">2021 - 2022</div>
+                    </div>
+                    <h3 class="timeline-title">Global Dental Centre</h3>
+                    <p class="timeline-sub">Administrative Assistant</p>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="meta-row">
+                      <div class="meta-star">★</div>
+                      <div class="meta-pill">2022 - 2022</div>
+                    </div>
+                    <h3 class="timeline-title">Eggette Hut</h3>
+                    <p class="timeline-sub">Sales Cashier</p>
+                  </div>
+                </div>
+                <div class="exp-col">
+                  <div class="timeline-item">
+                    <div class="meta-row">
+                      <div class="meta-star">★</div>
+                      <div class="meta-pill">2023 - 2024</div>
+                    </div>
+                    <h3 class="timeline-title">M.Dance Studio</h3>
+                    <p class="timeline-sub">Dance Instructor</p>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="meta-row">
+                      <div class="meta-star">★</div>
+                      <div class="meta-pill">2025 - 2025</div>
+                    </div>
+                    <h3 class="timeline-title">3Dz Dance Studio</h3>
+                    <p class="timeline-sub">Dance Instructor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="edu-extras">
+            <h2 class="extras-title">Extracurriculars</h2>
+            <div class="extras-row">
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="drawing.png" alt="Drawing">
+                </div>
+                <p class="extra-label">Drawing</p>
+              </div>
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="singing.png" alt="Singing">
+                </div>
+                <p class="extra-label">Singing</p>
+              </div>
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="dancing.png" alt="Dancing">
+                </div>
+                <p class="extra-label">Dancing</p>
+              </div>
+
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="laptop.png" alt="Watching movies">
+                </div>
+                <p class="extra-label">Watching movies</p>
+              </div>
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="swimming.png" alt="Swimming">
+                </div>
+                <p class="extra-label">Swimming</p>
+              </div>
+
+              <div class="extra-item">
+                <div class="extra-icon">
+                  <img src="tennis.png" alt="Playing tennis">
+                </div>
+                <p class="extra-label">Playing tennis</p>
+              </div>
+            </div>
+          </div>
+          <div class="edu-bottom">
+            <div class="bottom-grid">
+              <div>
+                <h2 class="edu-heading">Languages</h2>
+                <div class="lang-list">
+                  <div class="lang-item">
+                    <div class="lang-name">中文</div>
+                    <div class="lang-level">Fluent</div>
+                  </div>
+                  <div class="lang-item">
+                    <div class="lang-name">English</div>
+                    <div class="lang-level">Fluent</div>
+                  </div>
+                  <div class="lang-item">
+                    <div class="lang-name">안녕</div>
+                    <div class="lang-level">Beginner</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 class="edu-heading">School Involvement</h2>
+                <div class="involve-card">
+                  <ul class="involve-list">
+                    <li><strong>1. Fashion for Change</strong></li>
+                    <li><strong>2. Haebeat Dance Crew</strong></li>
+                    <li><strong>3. Christian Fellowship</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div id="skills">
+        <!-- TOP BLUE PANEL -->
+        <section class="skills-top">
+          <div class="skills-inner">
+
+            <!-- "My Skills" pill -->
+            <div class="skills-title-pill">
+              <h2>My Skills</h2>
+              <img class="skills-sparkle" src="img/skills-sparkle.png" alt="sparkle icon placeholder">
+            </div>
+
+            <!-- Skills bubbles graphic (you will upload later) -->
+            <div class="skills-bubbles">
+              <img src="skills.png" alt="skills bubbles image placeholder">
+            </div>
+
+            <!-- Decorative stars/emoji (optional image placeholder) -->
+            <div class="skills-decor">
+              <img src="img/skills-decor.png" alt="decor icons placeholder">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- BOTTOM BEIGE PANEL -->
+        <section class="skills-bottom">
+          <div class="skills-inner">
+
+            <!-- Character image -->
+            <div class="skills-character">
+              <img src="img/character.png" alt="character image placeholder">
+            </div>
+
+            <!-- "Why Me" pill -->
+            <div class="whyme-row">
+              <div class="whyme-divider"></div>
+              <div class="whyme-pill">Why Me</div>
+            </div>
+
+            <!-- Paragraph block -->
+            <div class="whyme-text">
+              <p>
+                I&rsquo;m a quick, conscientious learner who thrives in collaborative environments. I enjoy
+                contributing ideas, supporting teammates, and welcoming feedback that strengthens the work.
+                When challenges arise, I stay solution-focused and collaborate to move forward. Driven by
+                client needs and a user-centered mindset, I aim to create meaningful, thoughtful, and
+                effective designs. I bring value to any team through my positivity, strong teamwork, and
+                people-focused approach.
+              </p>
+            </div>
+
+            <!-- Optional bottom-right doodle image -->
+            <div class="whyme-doodle">
+              <img src="img/whyme-doodle.png" alt="doodle placeholder">
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+
+      <!-- PROJECTS -->
+      <div id="projects">
+        <h2>Projects</h2>
+        <p>Text-holder: I will add my projects content here later.</p>
+      </div>
+
+      <!-- FOOTER -->
+      <footer>
+        <h2 class="footer-name">Amy Liu</h2>
+        <p class="footer-copyright">© 2025 Amy Liu. All Rights Reserved.</p>
+      </footer>
+    </div>
+    </div>
+  </body>
+</html>
